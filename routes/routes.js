@@ -12,6 +12,21 @@ router.get('/tickets', async (req, res) => {
   }
 })
 
+router.get('/tickets/:id', async (req, res) => {
+  try {
+    const foundTicket = await db('tickets').where({ id: req.params.id }).select()
+
+    if (!foundTicket.length) {
+      res.status(400)
+      return res.json({ message: 'Ticket not found' })
+    }
+
+    res.status(200).json(foundTicket)
+  } catch (err) {
+    res.status(500).json({ message: 'Error getting tickets', error: err })
+  }
+})
+
 router.post('/tickets', async (req, res) => {
   try {
     const { title, description, status } = req.body
@@ -37,6 +52,23 @@ router.put('/tickets/:id', async (req, res) => {
     }
 
     res.status(200).json(ticket)
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating ticket', error: err })
+  }
+})
+
+router.delete('/tickets/:id', async (req, res) => {
+  try {
+    const foundTicket = await db('tickets').where({ id: req.params.id })
+
+    if (!foundTicket.length) {
+      res.status(400)
+      return res.json({ message: 'Ticket not found' })
+    }
+
+    await db('tickets').where({ id: req.params.id }).del()
+
+    res.status(200).json({ message: 'Ticket has been deleted' })
   } catch (err) {
     res.status(500).json({ message: 'Error updating ticket', error: err })
   }
