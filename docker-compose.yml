@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:latest
     environment:
-      - POSTGRES_DB=typing_game_dev
+      - POSTGRES_DB=issue_tracker_dev
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
