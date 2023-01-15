@@ -1,10 +1,21 @@
-require('dotenv').config()
+require('dotenv').config({ path: '../.env' })
 
-const knex = require('knex')
+module.exports = {
+  development: {
+    client: 'pg',
+    connection: process.env.DB_URL,
+    migrations: {
+      directory: './migrations',
+    },
+    seeds: { directory: './seeds' },
+  },
 
-const knexfile = require('./knexfile')
-
-const env = process.env.NODE_ENV
-const configOptions = knexfile[env]
-
-module.exports = knex(configOptions)
+  production: {
+    client: 'pg',
+    connection: process.env.DB_URL,
+    migrations: {
+      directory: './migrations',
+    },
+    seeds: { directory: './seeds' },
+  },
+}
