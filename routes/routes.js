@@ -1,10 +1,11 @@
 const express = require('express')
+const db = require('../db/db')
 
 const router = express.Router()
 
 router.get('/project', async (req, res) => {
-  res.send('you made a request, cool I guess')
+  const tickets = await db('tickets').select()
+  res.status(200).json(tickets)
 })
-
 
 module.exports = router
