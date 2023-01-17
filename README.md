@@ -20,11 +20,12 @@ This is the API for [Issue Tracker](https://github.com/tricia-holmes/issue-track
 * ![NodeJS][NodeJS]
 * ![Heroku][Heroku]
 * ![Docker][Docker]
+* <img width="110"
+src="https://user-images.githubusercontent.com/108706408/212944219-185b23f9-ab93-4954-b4a0-442137c19ed9.png"
+/>
 * ![Postgres][Postgres]
-* ![Sequelize][Sequelize]
 * ![Express.js][Express.js]
 * ![JavaScript][JavaScript]
-
 
 
 
